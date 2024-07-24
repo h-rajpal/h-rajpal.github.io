@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "$schema": "https://raw.githubusercontent.com/h-rajpal/h-rajpal.github.io/main/data/schema.json",
   "basics": {
     "name": "Hardik Rajpal",
     "label": "Postdoctoral Researcher",
