@@ -1,9 +1,9 @@
 {
-  "$schema": "https://raw.githubusercontent.com/h-rajpal/h-rajpal.github.io/main/data/schema.json",
+  "$schema": "https://raw.githubusercontent.com/h-rajpal/h-rajpal.github.io/main/extra/schema.json",
   "basics": {
     "name": "Hardik Rajpal",
     "label": "Postdoctoral Researcher",
-    "image": "https://hugo-theme-gruvbox.schnerring.net/richard-hendricks.webp",
+    "image": "../images/profile.jpg",
     "email": "h.rajpal15@imperial.ac.uk",
     "summary": "I am a complexity scientist who finds joy in studying emergent phenomenon in nature, economy, society and the brain.",
     "location": {
@@ -148,10 +148,18 @@
   "teaching": [ 
     {
     "name": "Complexity and Networks Lab",
-    "organization": "Department of Physics, Imperial College London",
-    "roles": ["Lab Demonstrator"],
+    "entity": "Department of Physics, Imperial College London",
+    "role": "Lab Demonstrator",
     "startDate": "2020-01-10",
     "endDate": "2020-03-31"
+  },
+  {
+    "name": "Department of Mathematics, Imperial College London",
+    "entity": "Imperial College London",
+    "role": "MSc & UG Supervisor",
+    "startDate": "2019-01-10",
+    "endDate": "2024-08-31",
+    "description": "Supervised multiple Masters and Undergraduate students, interested in pursuing a dissertation in the field of complexity, networks and neuroscience."
   }
   ],
   "meta": {
