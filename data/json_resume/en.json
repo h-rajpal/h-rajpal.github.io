@@ -3,7 +3,7 @@
   "basics": {
     "name": "Hardik Rajpal",
     "label": "Postdoctoral Researcher",
-    "image": "../images/profile.jpg",
+    "image": "https://raw.githubusercontent.com/h-rajpal/h-rajpal.github.io/main/images/profile.jpg",
     "email": "h.rajpal15@imperial.ac.uk",
     "summary": "I am a complexity scientist who finds joy in studying emergent phenomenon in nature, economy, society and the brain.",
     "location": {
@@ -47,14 +47,28 @@
       "name": "Imperial College London",
       "location": "London, UK",
       "position": "Postdoctoral Researcher",
-      "url": "http://piedpiper.com",
+      "url": "https://profiles.imperial.ac.uk/h.rajpal15",
       "startDate": "2023-04-01",
       "endDate": "2025-03-31",
-      "summary": "Pied Piper is a multi-platform technology based on a proprietary universal compression algorithm that has consistently fielded high Weisman Scores™ that are not merely competitive, but approach the theoretical limit of lossless compression.",
+      "summary": "Statistical Physics of Cognition is a project focused on investigationg the role of critical brain dynamics in cognition using experimental, mathematical and computational methods. Key workflows of the project involve,",
       "highlights": [
-        "Build an algorithm for artist to detect if their music was violating copy right infringement laws",
-        "Successfully won Techcrunch Disrupt",
-        "Optimized an algorithm that holds the current world record for Weisman Scores"
+        "Analysis of large-scale neuronal calcium imaging datasets generated from a 2p mesoscope. ",
+        "Information-theoretic analysis to infer distance to criticality.",
+        "Quantifying emergence in oscillatory brain dynamics in neuropixel datasets and mathematical models of spiking networks."
+      ]
+    },
+    {
+      "name": "The Alan Turing Institute",
+      "location": "London, UK",
+      "position": "Postdoctoral Researcher",
+      "url": "https://profiles.imperial.ac.uk/h.rajpal15",
+      "startDate": "2021-07-26",
+      "endDate": "2023-03-31",
+      "summary": "The Shocks and Resilience project ",
+      "highlights": [
+        "Analysis of large-scale neuronal calcium imaging datasets generated from a 2p mesoscope. ",
+        "Information-theoretic analysis to infer distance to criticality.",
+        "Quantifying emergence in oscillatory brain dynamics in neuropixel datasets and mathematical models of spiking networks."
       ]
     }
   ],
@@ -151,7 +165,8 @@
     "entity": "Department of Physics, Imperial College London",
     "role": "Lab Demonstrator",
     "startDate": "2020-01-10",
-    "endDate": "2020-03-31"
+    "endDate": "2020-03-31",
+    "summary": "Assisted students in hands-on tutorials focused on modelling self-organized criticality, generating scale-free network topology and numerical analysis."
   },
   {
     "name": "Department of Mathematics, Imperial College London",
@@ -159,7 +174,7 @@
     "role": "MSc & UG Supervisor",
     "startDate": "2019-01-10",
     "endDate": "2024-08-31",
-    "description": "Supervised multiple Masters and Undergraduate students, interested in pursuing a dissertation in the field of complexity, networks and neuroscience."
+    "summary": "Supervised multiple Masters and Undergraduate students, interested in pursuing a dissertation in the field of complexity, networks and neuroscience."
   }
   ],
   "meta": {

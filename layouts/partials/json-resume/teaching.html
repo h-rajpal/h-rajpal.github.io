@@ -16,9 +16,8 @@
             <!-- {{ with .type }}
               ({{ . }})
             {{ end }} -->
-            {{ with .description }}
-              <span>—</span>
-              <span class="jr-work__description">{{ . }}</span>
+            {{ with .summary}}
+            <p class="jr-work__summary">{{ . }}</p>
             {{ end }}
           </div>
           {{ with .entity }}
