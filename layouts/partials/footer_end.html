@@ -2,11 +2,5 @@
   Add custom HTML at the end of <body>
 -->
 
-{{ $carouselJs := resources.Get "js/carousel.js" | resources.ExecuteAsTemplate "js/carousel.js" . }}
-{{ if hugo.IsProduction }}
-  {{ $carouselJs = $carouselJs | js.Build (dict "target" "es6" "minify" true) | fingerprint "sha512" }}
-  <script src="{{ $carouselJs.RelPermalink }}" integrity="{{ $carouselJs.Data.Integrity }}"></script>
-{{ else }}
-  {{ $carouselJs = $carouselJs | js.Build (dict "target" "es6") }}
-  <script src="{{ $carouselJs.RelPermalink }}"></script>
-{{ end }}
+{{ $carouselJs := resources.Get "js/carousel.js" | js.Build }}
+<script src="{{ $carouselJs.RelPermalink }}"></script>
