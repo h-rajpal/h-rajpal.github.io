@@ -1,0 +1,45 @@
+{{ define "main" }}
+  <article class="research-single">
+    <div class="post-header">
+      <a href="/research/" class="back-link">← Back to Research</a>
+      <h1>{{ .Title | markdownify }}</h1>
+      {{ if .Params.date }}
+        <div class="post-meta">
+          <time>{{ .Date.Format "January 2, 2006" }}</time>
+        </div>
+      {{ end }}
+    </div>
+
+    <div class="post-content">
+      {{ .Content }}
+    </div>
+
+    <!-- Related Publications Section -->
+    {{ $topicTitle := .Title }}
+    {{ $allPubs := (index site.Data "publications").publications }}
+    {{ $relatedPubs := slice }}
+    {{ range $allPubs }}
+      {{ if in .research_topics $topicTitle }}
+        {{ $relatedPubs = $relatedPubs | append . }}
+      {{ end }}
+    {{ end }}
+    {{ if $relatedPubs }}
+      <div class="research-publications-section">
+        <h2>Related Publications</h2>
+        <div class="publications-in-topic">
+          {{ range $relatedPubs }}
+            <div class="publication-in-topic">
+              <a href="{{ .journal_url }}" target="_blank" rel="noopener noreferrer" class="publication-topic-title">{{ .title }}</a>
+              {{ if .authors }}
+                <p class="publication-topic-authors">{{ delimit .authors ", " }}</p>
+              {{ end }}
+              {{ if .pdf_path }}
+                <a href="{{ .pdf_path }}" target="_blank" rel="noopener noreferrer" class="publication-topic-pdf">📄 PDF</a>
+              {{ end }}
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    {{ end }}
+  </article>
+{{ end }}

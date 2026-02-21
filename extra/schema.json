@@ -236,6 +236,7 @@
       }
     },
     "awards": {
+      "title":"Grants and Awards",
       "type": "array",
       "description": "Specify any awards you have received throughout your professional career",
       "additionalItems": false,

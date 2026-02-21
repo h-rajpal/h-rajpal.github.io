@@ -2,74 +2,64 @@
   "$schema": "https://raw.githubusercontent.com/h-rajpal/h-rajpal.github.io/main/extra/schema.json",
   "basics": {
     "name": "Hardik Rajpal",
-    "label": "Postdoctoral Researcher",
+    "label": "Eric and Wendy Schmidt\nAI in Science Fellow",
     "image": "https://raw.githubusercontent.com/h-rajpal/h-rajpal.github.io/main/images/profile.jpg",
     "email": "h.rajpal15@imperial.ac.uk",
-    "summary": "I am a complexity scientist who finds joy in studying emergent phenomenon in nature, economy, society and the brain.",
+    "summary": "A complexity scientist on the quest to understand the principles of biological, social and artificial intelligence.",
     "location": {
       "city": "London"
     },
     "profiles": [
       {
         "network": "GitHub",
-        "username": "hugo-theme-gruvbox",
-        "url": "https://github.com/schnerring/hugo-theme-gruvbox"
-      },
-      {
-        "network": "GitHub",
-        "username": "hugo-mod-json-resume",
-        "url": "https://github.com/schnerring/hugo-mod-json-resume"
+        "url": "https://github.com/h-rajpal"
       },
       {
         "network": "X",
-        "url": "https://x.com/SiliconHBO"
+        "url": "https://x.com/pixelated_poet"
       },
       {
-        "network": "fandom",
-        "url": "https://silicon-valley.fandom.com/wiki/Richard_Hendricks"
-      },
-      {
-        "network": "HBO",
-        "url": "https://www.hbo.com/silicon-valley"
-      },
-      {
-        "network": "IMDB",
-        "url": "https://www.imdb.com/title/tt2575988/"
-      },
-      {
-        "network": "Wikipedia",
-        "url": "https://en.wikipedia.org/wiki/List_of_Silicon_Valley_characters#Richard_Hendricks"
+        "network": "bluesky",
+        "url": "https://bsky.app/profile/h-rajpal.bsky.social"
       }
     ]
   },
   "work": [
     {
-      "name": "Imperial College London",
+      "name": "I-X Imperial College London",
+      "location": "London, UK",
+      "position": "AI in Science Research Fellow",
+      "url": "https://profiles.imperial.ac.uk/h.rajpal15",
+      "startDate": "2025-10-01",
+      "endDate": "2027-09-30",
+      "summary": "Exploring the role of self-organization and emergence in task-generalization and learning in artificial and biological neural networks."
+    },
+    {
+      "name": "Mathematics, Imperial College London",
       "location": "London, UK",
       "position": "Postdoctoral Researcher",
       "url": "https://profiles.imperial.ac.uk/h.rajpal15",
       "startDate": "2023-04-01",
-      "endDate": "2025-03-31",
-      "summary": "Statistical Physics of Cognition is a project focused on investigationg the role of critical brain dynamics in cognition using experimental, mathematical and computational methods. Key workflows of the project involve,",
-      "highlights": [
-        "Analysis of large-scale neuronal calcium imaging datasets generated from a 2p mesoscope. ",
-        "Information-theoretic analysis to infer distance to criticality.",
-        "Quantifying emergence in oscillatory brain dynamics in neuropixel datasets and mathematical models of spiking networks."
-      ]
+      "endDate": "2025-09-30",
+      "summary": "Statistical Physics of Cognition project focused on investigationg the role of critical brain dynamics in cognition using experimental, mathematical and computational methods."
     },
     {
       "name": "The Alan Turing Institute",
       "location": "London, UK",
       "position": "Postdoctoral Researcher",
-      "url": "https://profiles.imperial.ac.uk/h.rajpal15",
+      "url": "https://www.turing.ac.uk/people/researchers/hardik-rajpal",
       "startDate": "2021-07-26",
       "endDate": "2023-03-31",
-      "summary": "The Shocks and Resilience project ",
-      "highlights": [
-        "Analysis of large-scale neuronal calcium imaging datasets generated from a 2p mesoscope. ",
-        "Information-theoretic analysis to infer distance to criticality.",
-        "Quantifying emergence in oscillatory brain dynamics in neuropixel datasets and mathematical models of spiking networks."
-      ]
+      "summary": "The Shocks and Resilience project was an interdisciplinary research project exploring resilience in health, economic and online social systems."
+    },
+    {
+      "name": "BIOS Health Ltd.",
+      "location": "Cambridge, UK",
+      "position": "PhD Intern",
+      "url": "https://www.bios.health",
+      "startDate": "2020-02-28",
+      "endDate": "2021-03-15",
+      "summary": "BIOS Health is a research intensive healthtech startup based in Cambridge. They are a pioneering AI driven neural-interface devices to develop targetted therapies for chronic illnesses."
     }
   ],
   "volunteer": [
@@ -85,32 +75,81 @@
   ],
   "education": [
     {
-      "institution": "University of Oklahoma",
-      "url": "https://www.ou.edu/",
-      "area": "Information Technology",
-      "studyType": "Bachelor",
-      "startDate": "2011-06-01",
-      "endDate": "2014-01-01",
-      "score": "4.0",
-      "courses": ["DB1101 - Basic SQL", "CS2011 - Java Introduction"]
+      "institution": "Imperial College London",
+      "url": "https://www.imperial.ac.uk/",
+      "area": "Applied Mathematics",
+      "studyType": "PhD",
+      "startDate": "2017-09-30",
+      "endDate": "2021-10-01",
+      "dissertation": "Causality and Emergence in Complex Systems: Perspectives from Information Theory"
+    },
+    {
+      "institution": "Indian Institute of Technology Kharagpur",
+      "url": "https://www.iitkgp.ac.in/",
+      "area": "Physics",
+      "studyType": "Integrated MSc",
+      "startDate": "2012-07-20",
+      "endDate": "2017-08-30",
+      "dissertation": "On the dynamics of parametrically forced oscillations in a damped planar double pendulum"
     }
   ],
   "awards": [
     {
-      "title": "Digital Compression Pioneer Award",
-      "date": "2014-11-01",
-      "awarder": "Techcrunch",
-      "summary": "There is no spoon."
+      "title": "Best Poster Award",
+      "date": "2024-07-10",
+      "awarder": "UK Neural Computation Conference 2024",
+      "summary": "Awarded for the poster \"Are Brain Oscillations Emergent?\""
+    },
+    {
+      "title": "Mathematics Small Grants Award",
+      "date": "2022-03-01",
+      "awarder": "Engineering and Physical Sciences Research Council (EPSRC)",
+      "summary": "Co wrote the proposal for the \"Quantifying Agency in Time Evolving Systems\" as the named researcher."
+    },
+    {
+      "title": "President's PhD Scholarship",
+      "date": "2017-10-01",
+      "awarder": "Imperial College London",
+      "summary": "Awarded Scholarship to pursue a PhD in Applied Mathematics at the Centr for Complexity Sciences, Imperial College."
+    },
+    {
+      "title": "Innovation in Science Pursuit for Inspired Research (INSPIRE) Fellowship",
+      "date": "2012-07-20",
+      "awarder": "Department of Science and Technology, Government of India",
+      "summary": "Awarded for pursuing research in Natural Sciences at the undergraduate level."
     }
+    
   ],
   "publications": [
     {
-      "name": "Video compression for 3d media",
-      "publisher": "Hooli",
-      "releaseDate": "2014-10-01",
-      "url": "http://en.wikipedia.org/wiki/Silicon_Valley_(TV_series)",
-      "summary": "Innovative middle-out compression algorithm that changes the way we store data."
+      "name": "Psychedelics and schizophrenia: Distinct alterations to Bayesian inference",
+      "publisher": "Neuroimage",
+      "authors": "Hardik Rajpal, Pedro AM Mediano, Fernando E Rosas, Christopher B Timmermann, Stefan Brugger, Suresh Muthukumaraswamy, Anil K Seth, Daniel Bor, Robin L Carhart-Harris, Henrik J Jensen",
+      "releaseDate": "2022-11-01",
+      "url": "https://doi.org/10.1016/j.neuroimage.2022.119624"
+    },
+    {
+      "name": "Tangled worldview model of opinion dynamics",
+      "publisher": "Frontiers in Physics",
+      "authors": "Hardik Rajpal, Fernando E Rosas, Henrik J Jensen",
+      "releaseDate": "2019-10-25",
+      "url": "https://doi.org/10.3389/fphy.2019.00163"
+    },
+    {
+      "name": "Synergistic Small Worlds that Drive Technological Sophistication",
+      "publisher": "arXiv",
+      "authors": "Hardik Rajpal, Omar A Guerrero",
+      "releaseDate": "2023-01-11",
+      "url": "https://arxiv.org/abs/2301.04579"
+    },
+    {
+      "name": "Quantifying Hierarchical Selection",
+      "publisher": "arXiv",
+      "authors": "Hardik Rajpal, Clem von Stengel, Pedro AM Mediano, Fernando E Rosas, Eduardo Viegas, Pablo A Marquet, Henrik J Jensen",
+      "releaseDate": "2023-10-31",
+      "url": "https://arxiv.org/abs/2310.20386"
     }
+    
   ],
   "skills": [
     {
@@ -161,8 +200,7 @@
   ],
   "teaching": [ 
     {
-    "name": "Complexity and Networks Lab",
-    "entity": "Department of Physics, Imperial College London",
+    "name": "Complexity and Networks Lab, Imperial College London",
     "role": "Lab Demonstrator",
     "startDate": "2020-01-10",
     "endDate": "2020-03-31",
@@ -170,7 +208,6 @@
   },
   {
     "name": "Department of Mathematics, Imperial College London",
-    "entity": "Imperial College London",
     "role": "MSc & UG Supervisor",
     "startDate": "2019-01-10",
     "endDate": "2024-08-31",

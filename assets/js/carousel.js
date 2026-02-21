@@ -1,0 +1,95 @@
+// Publications Carousel
+document.addEventListener('DOMContentLoaded', function() {
+  const carousel = document.querySelector('.publications-carousel');
+  if (!carousel) return;
+
+  const items = document.querySelectorAll('.carousel-publication-item');
+  const dotsContainer = document.querySelector('.carousel-dots');
+  const prevBtn = document.querySelector('.carousel-prev');
+  const nextBtn = document.querySelector('.carousel-next');
+
+  if (items.length === 0) return;
+
+  let currentIndex = 0;
+  let autoplayInterval;
+
+  // Create dots
+  items.forEach((_, index) => {
+    const dot = document.createElement('button');
+    dot.className = 'carousel-dot' + (index === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `Go to publication ${index + 1}`);
+    dot.addEventListener('click', () => {
+      clearInterval(autoplayInterval);
+      goToSlide(index);
+      startAutoplay();
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+  function goToSlide(index) {
+    items.forEach(item => item.classList.remove('active'));
+    document.querySelectorAll('.carousel-dot').forEach(dot => dot.classList.remove('active'));
+
+    items[index].classList.add('active');
+    document.querySelectorAll('.carousel-dot')[index].classList.add('active');
+    currentIndex = index;
+  }
+
+  function nextSlide() {
+    const next = (currentIndex + 1) % items.length;
+    goToSlide(next);
+  }
+
+  function prevSlide() {
+    const prev = (currentIndex - 1 + items.length) % items.length;
+    goToSlide(prev);
+  }
+
+  function startAutoplay() {
+    autoplayInterval = setInterval(nextSlide, 10000); // 10 seconds
+  }
+
+  // Event listeners
+  nextBtn?.addEventListener('click', () => {
+    clearInterval(autoplayInterval);
+    nextSlide();
+    startAutoplay();
+  });
+
+  prevBtn?.addEventListener('click', () => {
+    clearInterval(autoplayInterval);
+    prevSlide();
+    startAutoplay();
+  });
+
+  // Start autoplay
+  goToSlide(0);
+  startAutoplay();
+});
+
+// Abstract Toggle Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const abstractToggles = document.querySelectorAll('.abstract-toggle');
+  
+  abstractToggles.forEach(toggle => {
+    toggle.addEventListener('click', function() {
+      const container = this.nextElementSibling;
+      if (!container || !container.classList.contains('publication-abstract-container')) {
+        return;
+      }
+      
+      const isExpanded = this.classList.contains('expanded');
+      
+      if (isExpanded) {
+        // Collapse
+        container.style.display = 'none';
+        this.classList.remove('expanded');
+      } else {
+        // Expand
+        container.style.display = 'block';
+        this.classList.add('expanded');
+      }
+    });
+  });
+});
+

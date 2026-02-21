@@ -1,0 +1,31 @@
+{{ define "main" }}
+  <div class="research-container">
+    <h1>{{ .Title }}</h1>
+    
+    <div class="research-grid">
+      {{ range .Pages.ByTitle }}
+        <article class="research-card">
+          <a href="{{ .Permalink }}" class="research-card-link">
+            {{ if .Params.image }}
+              <div class="research-image-wrapper">
+                <img src="{{ .Params.image }}" alt="{{ .Title }}" class="research-image">
+              </div>
+            {{ else }}
+              <div class="research-image-wrapper research-image-placeholder">
+                <span>{{ .Title }}</span>
+              </div>
+            {{ end }}
+            <div class="research-card-content">
+              <h2>{{ .Title }}</h2>
+              {{ if .Params.description }}
+                <p class="research-description">{{ .Params.description }}</p>
+              {{ else }}
+                <p class="research-description">{{ substr .Summary 0 150 }}...</p>
+              {{ end }}
+            </div>
+          </a>
+        </article>
+      {{ end }}
+    </div>
+  </div>
+{{ end }}

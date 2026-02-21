@@ -12,26 +12,17 @@ type: "cv"
 
 {{< json-resume "education" >}}
 
-## Teaching
+<!-- ## Teaching
 
-{{< json-resume "teaching">}}
+{{< json-resume "teaching">}} -->
 
-## Awards
+<!-- ## Awards and Grants
 
-{{< json-resume "awards" >}}
+{{< json-resume "awards" >}} -->
 
-## Publications
+<!-- ## Selected Publications
 
 {{< json-resume "publications" >}}
 
-## Skills
+For a complete list of publications see [Google Scholar](https://scholar.google.co.uk/citations?user=JxVzoGQAAAAJ&hl=en) -->
 
-{{< json-resume "skills" >}}
-
-## Languages
-
-{{< json-resume "languages" >}}
-
-## Interests
-
-{{< json-resume "interests" >}}

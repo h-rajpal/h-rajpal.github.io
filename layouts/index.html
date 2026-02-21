@@ -5,8 +5,55 @@
       <div>{{ . }}</div>
     {{ end }}
   </div>
-  <!-- See https://gohugo.io/functions/where/#mainsections -->
-  <!-- {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
-  {{ $paginator := .Paginate $pages }}
-  {{ partial "post-list.html" $paginator }} -->
+
+  <!-- Research Section -->
+  <section class="about-research-section">
+    <h2><a href="/research/">Research</a></h2>
+    <div class="research-topics-carousel">
+      {{ $research := where site.AllPages "Section" "research" }}
+      {{ range $research }}
+        {{ if eq .Kind "page" }}
+          <article class="research-topic-card">
+            {{ if .Params.image }}
+              <div class="research-topic-image">
+                <img src="{{ .Params.image }}" alt="{{ .Title }}">
+              </div>
+            {{ else }}
+              <div class="research-topic-image research-topic-placeholder">
+                <span>{{ .Title }}</span>
+              </div>
+            {{ end }}
+            <div class="research-topic-title">
+              <a href="{{ .Permalink }}">{{ .Title }}</a>
+            </div>
+          </article>
+        {{ end }}
+      {{ end }}
+    </div>
+  </section>
+
+  <!-- Publications Carousel Section -->
+  <section class="about-publications-section">
+    <h2><a href="/publications/">Latest Publications</a></h2>
+    <div class="publications-carousel">
+      {{ $publications := (index site.Data "publications").publications }}
+      {{ range $index, $pub := first 5 $publications }}
+        <article class="carousel-publication-item" data-index="{{ $index }}">
+          <div class="carousel-publication-content">
+            <h3 class="carousel-publication-title">{{ $pub.title }}</h3>
+            <p class="carousel-publication-authors">{{ delimit $pub.authors ", " }}</p>
+            {{ if $pub.pdf_path }}
+              <a href="{{ $pub.pdf_path }}" target="_blank" rel="noopener noreferrer" class="carousel-pdf-link">📄 Download PDF</a>
+            {{ end }}
+          </div>
+        </article>
+      {{ end }}
+    </div>
+    <div class="carousel-controls">
+      <button class="carousel-prev" aria-label="Previous publication">❮</button>
+      <div class="carousel-dots"></div>
+      <button class="carousel-next" aria-label="Next publication">❯</button>
+    </div>
+  </section>
 {{ end }}
+

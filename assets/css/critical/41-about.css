@@ -1,0 +1,261 @@
+/* About Page: Research Topics Section */
+.about-research-section {
+  margin: 4rem 0 2rem 0;
+  padding: 2rem 0;
+  border-top: 2px solid var(--bg2);
+  border-bottom: 2px solid var(--bg2);
+}
+
+.about-research-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: var(--fg0);
+}
+
+.about-research-section h2 a {
+  color: var(--fg0);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.about-research-section h2 a:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+.research-topics-carousel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.25cm;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.research-topic-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.research-topic-card:hover {
+  transform: translateY(-8px);
+}
+
+.research-topic-image {
+  width: 95%;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.research-topic-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.research-topic-card:hover .research-topic-image img {
+  transform: scale(1.1);
+}
+
+.research-topic-placeholder {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 1rem;
+  text-align: center;
+}
+
+.research-topic-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.research-topic-title a {
+  color: var(--accent-color, #458588);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.research-topic-title a:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+/* About Page: Publications Carousel Section */
+.about-publications-section {
+  margin: 2rem 0;
+  padding: 2rem 0;
+  border-bottom: 2px solid var(--bg2);
+  border-radius: 8px;
+}
+
+.about-publications-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: var(--fg0);
+}
+
+.about-publications-section h2 a {
+  color: var(--fg0);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.about-publications-section h2 a:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+.publications-carousel {
+  position: relative;
+  min-height: 230px;
+  margin-bottom: 2rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-publication-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+  padding: 2.5rem;
+  background: white;
+  border-radius: 8px;
+  border-left: 4px solid var(--accent-color, #458588);
+  box-sizing: border-box;
+}
+
+.carousel-publication-item.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.carousel-publication-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.carousel-publication-title {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--foreground, #1d2021);
+  font-weight: 600;
+}
+
+.carousel-publication-authors {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--foreground-secondary, #504945);
+  font-style: italic;
+}
+
+.carousel-pdf-link {
+  display: inline-block;
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.carousel-pdf-link:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.carousel-prev,
+.carousel-next {
+  background: var(--accent-color, #458588);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+  background: var(--accent-color-hover, #3d6b73);
+  transform: scale(1.1);
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--bg3, #d5c4a1);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.carousel-dot.active {
+  background: var(--accent-color, #458588);
+  transform: scale(1.2);
+}
+
+.carousel-dot:hover {
+  background: var(--accent-color, #458588);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .research-topics-carousel {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .research-topic-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .carousel-controls {
+    gap: 1rem;
+  }
+
+  .carousel-prev,
+  .carousel-next {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+}

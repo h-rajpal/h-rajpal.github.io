@@ -2,9 +2,20 @@
   font-family: var(--font-monospace);
 }
 
+.jr-basics__label {
+  white-space: pre-line;
+}
+
 .jr__item-meta {
   align-items: start;
   flex-flow: column;
+}
+
+.jr-work__name,
+.jr-work__position {
+    flex-grow: 1;
+    text-align: left;
+    width: 60%;
 }
 
 @media (--md) {
@@ -18,6 +29,7 @@
   .jr-work__location {
     flex-grow: 1;
     text-align: right;
+    width: 40%;
   }
 
   .jr-awards__awarder,

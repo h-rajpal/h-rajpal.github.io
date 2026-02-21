@@ -12,8 +12,8 @@ main {
   align-items: start;
   display: grid;
   grid-area: main;
-  grid-template-areas: "empty content sidebar";
-  grid-template-columns: 1fr minmax(0, 650px) 4fr;
+  grid-template-areas: "heading content sidebar";
+  grid-template-columns: auto 1fr auto;
 }
 
 header {
@@ -27,11 +27,12 @@ footer {
 
 main,
 footer {
-  margin: 0.5em 1.1em;
+  margin: 0.5em calc(1.1em + 1cm) 0.5em calc(1.1em + 1cm);
 }
 
 .content {
   grid-area: content;
+  margin-right: 0.5cm;
 }
 
 .sidebar {

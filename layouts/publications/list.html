@@ -1,0 +1,71 @@
+{{ define "main" }}
+  <div class="publications-container">
+    <h1>{{ .Title }}</h1>
+    
+    <div class="publications-list">
+      {{ $publications := (index site.Data "publications").publications }}
+      {{ range $publications }}
+        <article class="publication-item">
+          {{ if .image }}
+            <div class="publication-image-wrapper">
+              <img src="{{ .image }}" alt="{{ .title }}" class="publication-image">
+              {{ if .journal_url }}
+                <a href="{{ .journal_url }}" target="_blank" rel="noopener noreferrer" class="publication-image-link"></a>
+              {{ end }}
+            </div>
+          {{ else }}
+            <div class="publication-image-wrapper publication-image-placeholder">
+              <span>Publication</span>
+              {{ if .journal_url }}
+                <a href="{{ .journal_url }}" target="_blank" rel="noopener noreferrer" class="publication-image-link"></a>
+              {{ end }}
+            </div>
+          {{ end }}
+          
+          <div class="publication-content">
+            <div class="publication-header">
+              <h2 class="publication-title">
+                {{ if .journal_url }}
+                  <a href="{{ .journal_url }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a>
+                {{ else }}
+                  {{ .title }}
+                {{ end }}
+              </h2>
+              {{ if .pdf_path }}
+                <a href="{{ .pdf_path }}" target="_blank" rel="noopener noreferrer" class="publication-pdf-icon" title="Download PDF">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                </a>
+              {{ end }}
+            </div>
+            
+            {{ if .authors }}
+              <p class="publication-authors">{{ delimit .authors ", " }}</p>
+            {{ end }}
+            
+            {{ if .abstract }}
+              <button class="abstract-toggle" data-publication="{{ .id | default .title }}">
+                <span class="abstract-label">Abstract</span>
+                <span class="abstract-arrow">▼</span>
+              </button>
+              <div class="publication-abstract-container" style="display: none;">
+                <p class="publication-abstract">{{ .abstract }}</p>
+              </div>
+            {{ end }}
+            
+            {{ if .research_topics }}
+              <div class="publication-topics">
+                {{ range .research_topics }}
+                  <a href="/research/{{ . | urlize }}/" class="topic-tag">{{ . }}</a>
+                {{ end }}
+              </div>
+            {{ end }}
+          </div>
+        </article>
+      {{ end }}
+    </div>
+  </div>
+{{ end }}

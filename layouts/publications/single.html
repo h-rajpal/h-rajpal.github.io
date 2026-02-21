@@ -1,0 +1,64 @@
+{{ define "main" }}
+  <article class="publication-single">
+    <div class="post-header">
+      <a href="/publications/" class="back-link">← Back to Publications</a>
+      <h1>{{ .Title | markdownify }}</h1>
+      
+      {{ if .Params.authors }}
+        <p class="publication-authors-full">{{ delimit .Params.authors ", " }}</p>
+      {{ end }}
+      
+      {{ if .Params.date }}
+        <div class="post-meta">
+          <time>{{ .Date.Format "January 2006" }}</time>
+        </div>
+      {{ end }}
+    </div>
+
+    <div class="publication-single-header">
+      {{ if .Params.image }}
+        <div class="publication-featured-image">
+          <img src="{{ .Params.image }}" alt="{{ .Title }}">
+        </div>
+      {{ end }}
+      
+      <div class="publication-single-meta">
+        {{ if .Params.journal_url }}
+          <p>
+            <a href="{{ .Params.journal_url }}" target="_blank" rel="noopener noreferrer" class="button-link">
+              View on Journal
+            </a>
+          </p>
+        {{ end }}
+        
+        {{ if .Params.pdf_path }}
+          <p>
+            <a href="{{ .Params.pdf_path }}" target="_blank" rel="noopener noreferrer" class="button-link pdf-link">
+              📄 Download PDF
+            </a>
+          </p>
+        {{ end }}
+        
+        {{ if .Params.research_topics }}
+          <div class="publication-topics-single">
+            <strong>Research Topics:</strong>
+            {{ range .Params.research_topics }}
+              <a href="/research/{{ . | urlize }}/" class="topic-tag">{{ . }}</a>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+
+    {{ if .Params.abstract }}
+      <div class="publication-abstract-full">
+        <strong>Abstract:</strong>
+        <p>{{ .Params.abstract }}</p>
+      </div>
+    {{ end }}
+
+    <div class="post-content">
+      {{ .Content }}
+    </div>
+  </article>
+{{ end }}
