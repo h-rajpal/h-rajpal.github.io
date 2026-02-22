@@ -12,8 +12,16 @@ main {
   align-items: start;
   display: grid;
   grid-area: main;
-  grid-template-areas: "heading content sidebar";
-  grid-template-columns: auto 1fr auto;
+  grid-template-areas: 
+    "heading"
+    "content"
+    "sidebar";
+  grid-template-columns: 1fr;
+
+  @media (--lg) {
+    grid-template-areas: "heading content sidebar";
+    grid-template-columns: auto 1fr auto;
+  }
 }
 
 header {
@@ -33,17 +41,4 @@ footer {
 .content {
   grid-area: content;
   margin-right: 0.5cm;
-}
-
-.sidebar {
-  display: none;
-  flex-direction: column;
-  grid-area: sidebar;
-  margin-top: 3rem;
-  position: sticky;
-  top: 2rem;
-
-  @media (--lg) {
-    display: flex;
-  }
 }
