@@ -9,7 +9,8 @@
   min-height: 230px;
   margin-bottom: 2rem;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
+  z-index: 1;
 }
 
 .carousel-publication-item {
@@ -26,11 +27,13 @@
   border-radius: 8px;
   border-left: 4px solid #458588;
   box-sizing: border-box;
+  z-index: 1;
 }
 
 .carousel-publication-item.active {
   opacity: 1 !important;
   pointer-events: auto;
+  z-index: 2;
 }
 </style>
 
@@ -149,6 +152,36 @@ document.addEventListener('DOMContentLoaded', function() {
         this.classList.add('expanded');
       }
     });
+  });
+});
+
+// Load More Publications Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const loadMoreButton = document.getElementById('load-more-button');
+  if (!loadMoreButton) return;
+
+  const publicationsList = document.getElementById('publications-list');
+  if (!publicationsList) return;
+
+  const totalPublications = parseInt(loadMoreButton.getAttribute('data-total'), 10);
+
+  function updateButtonVisibility() {
+    const hiddenItems = publicationsList.querySelectorAll('.publication-item.hidden');
+    if (hiddenItems.length === 0) {
+      loadMoreButton.style.display = 'none';
+    }
+  }
+
+  loadMoreButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    const hiddenItems = publicationsList.querySelectorAll('.publication-item.hidden');
+    const itemsToShow = Math.min(5, hiddenItems.length);
+
+    for (let i = 0; i < itemsToShow; i++) {
+      hiddenItems[i].classList.remove('hidden');
+    }
+
+    updateButtonVisibility();
   });
 });
 </script>

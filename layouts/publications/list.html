@@ -2,10 +2,10 @@
   <div class="publications-container">
     <h1>{{ .Title }}</h1>
     
-    <div class="publications-list">
+    <div class="publications-list" id="publications-list">
       {{ $publications := (index site.Data "publications").publications }}
-      {{ range $publications }}
-        <article class="publication-item">
+      {{ range $index, $pub := $publications }}
+        <article class="publication-item{{ if ge $index 5 }} hidden{{ end }}" data-index="{{ $index }}">
           {{ if .image }}
             <div class="publication-image-wrapper">
               <img src="{{ .image }}" alt="{{ .title }}" class="publication-image">
@@ -67,5 +67,13 @@
         </article>
       {{ end }}
     </div>
+    
+    {{ if gt (len $publications) 5 }}
+      <div class="publications-load-more-container">
+        <button class="load-more-button" id="load-more-button" data-total="{{ len $publications }}">
+          Show More
+        </button>
+      </div>
+    {{ end }}
   </div>
 {{ end }}

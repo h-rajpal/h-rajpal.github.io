@@ -213,9 +213,12 @@
 }
 
 .carousel-dots {
-  display: flex;
+  display: flex !important;
   gap: 0.5rem;
   justify-content: center;
+  position: relative;
+  z-index: 10;
+  margin-top: 0.75rem;
 }
 
 .carousel-dot {
@@ -225,6 +228,11 @@
   background: var(--bg3, #d5c4a1);
   cursor: pointer;
   transition: background 0.2s ease, transform 0.2s ease;
+  border: none;
+  padding: 0;
+  position: relative;
+  z-index: 10;
+  visibility: visible !important;
 }
 
 .carousel-dot.active {
@@ -238,6 +246,15 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .publications-carousel {
+    min-height: 350px;
+  }
+
+  .carousel-publication-item {
+    padding: 1.5rem;
+    font-size: 0.95rem;
+  }
+
   .research-topics-carousel {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 1.5rem;
