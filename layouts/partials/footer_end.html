@@ -2,6 +2,38 @@
   Add custom HTML at the end of <body>
 -->
 
+<style>
+/* Ensure carousel is visible */
+.publications-carousel {
+  position: relative;
+  min-height: 230px;
+  margin-bottom: 2rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-publication-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+  padding: 2.5rem;
+  background: white;
+  border-radius: 8px;
+  border-left: 4px solid #458588;
+  box-sizing: border-box;
+}
+
+.carousel-publication-item.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+</style>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   console.log('Carousel script loading...');
