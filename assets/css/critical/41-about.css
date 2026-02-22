@@ -94,7 +94,7 @@
 /* About Page: Publications Carousel Section */
 .about-publications-section {
   margin: 2rem 0;
-  padding: 2rem 0;
+  padding: 2rem 2cm;
   border-bottom: 2px solid var(--bg2);
   border-radius: 8px;
   overflow: visible;
@@ -244,6 +244,10 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .about-publications-section {
+    padding: 2rem 0.2cm;
+  }
+
   .publications-carousel {
     width: 85%;
     min-height: 350px;
