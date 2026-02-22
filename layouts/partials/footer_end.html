@@ -38,29 +38,15 @@
 </style>
 
 <script>
-// Force display of first carousel item
-setTimeout(function() {
-  const firstItem = document.querySelector('.carousel-publication-item');
-  if (firstItem) {
-    console.log('Setting first carousel item as active');
-    firstItem.classList.add('active');
-    console.log('First item classes:', firstItem.className);
-  }
-}, 100);
-
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('Carousel script loading...');
-  
   const carousel = document.querySelector('.publications-carousel');
   if (!carousel) return;
 
   const items = document.querySelectorAll('.carousel-publication-item');
-  const dotsContainer = document.querySelector('.carousel-dots');
   const prevBtn = document.querySelector('.carousel-prev');
   const nextBtn = document.querySelector('.carousel-next');
 
   if (items.length === 0) return;
-  console.log('DOM Content Loaded - Carousel initializing with ' + items.length + ' items');
 
   let currentIndex = 0;
   let autoplayInterval;
@@ -68,30 +54,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // Ensure first item is visible immediately
   items[0].classList.add('active');
 
-  // Create dots if container exists
-  if (dotsContainer) {
-    items.forEach((_, index) => {
-      const dot = document.createElement('button');
-      dot.className = 'carousel-dot' + (index === 0 ? ' active' : '');
-      dot.setAttribute('aria-label', 'Go to publication ' + (index + 1));
-      dot.addEventListener('click', () => {
-        clearInterval(autoplayInterval);
-        goToSlide(index);
-        startAutoplay();
-      });
-      dotsContainer.appendChild(dot);
-    });
-  }
-
   function goToSlide(index) {
     items.forEach(item => item.classList.remove('active'));
-    const allDots = document.querySelectorAll('.carousel-dot');
-    allDots.forEach(dot => dot.classList.remove('active'));
-
     items[index].classList.add('active');
-    if (allDots.length > index) {
-      allDots[index].classList.add('active');
-    }
     currentIndex = index;
   }
 

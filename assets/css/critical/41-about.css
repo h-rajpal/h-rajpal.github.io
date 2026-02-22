@@ -97,6 +97,8 @@
   padding: 2rem 0;
   border-bottom: 2px solid var(--bg2);
   border-radius: 8px;
+  overflow: visible;
+  margin-bottom: 8rem;
 }
 
 .about-publications-section h2 {
@@ -119,9 +121,11 @@
 .publications-carousel {
   position: relative;
   min-height: 230px;
-  margin-bottom: 2rem;
-  width: 100%;
-  overflow: hidden;
+  margin: 0 auto 2rem auto;
+  width: 90%;
+  max-width: 900px;
+  overflow: visible;
+  z-index: 1;
 }
 
 .carousel-publication-item {
@@ -138,11 +142,13 @@
   border-radius: 8px;
   border-left: 4px solid var(--accent-color, #458588);
   box-sizing: border-box;
+  z-index: 1;
 }
 
 .carousel-publication-item.active {
   opacity: 1;
   pointer-events: auto;
+  z-index: 2;
 }
 
 .carousel-publication-content {
@@ -188,6 +194,9 @@
   justify-content: center;
   gap: 2rem;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 10;
+  margin-top: 0;
 }
 
 .carousel-prev,
@@ -204,6 +213,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.carousel-prev {
+  left: -60px;
+}
+
+.carousel-next {
+  right: -60px;
 }
 
 .carousel-prev:hover,
@@ -213,46 +235,32 @@
 }
 
 .carousel-dots {
-  display: flex !important;
-  gap: 0.5rem;
-  justify-content: center;
-  position: relative;
-  z-index: 10;
-  margin-top: 0.75rem;
+  display: none !important;
 }
 
 .carousel-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--bg3, #d5c4a1);
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
-  border: none;
-  padding: 0;
-  position: relative;
-  z-index: 10;
-  visibility: visible !important;
-}
-
-.carousel-dot.active {
-  background: var(--accent-color, #458588);
-  transform: scale(1.2);
-}
-
-.carousel-dot:hover {
-  background: var(--accent-color, #458588);
+  display: none !important;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .publications-carousel {
+    width: 85%;
     min-height: 350px;
+    margin-bottom: 2rem;
   }
 
   .carousel-publication-item {
     padding: 1.5rem;
     font-size: 0.95rem;
+  }
+
+  .carousel-prev {
+    left: -50px;
+  }
+
+  .carousel-next {
+    right: -50px;
   }
 
   .research-topics-carousel {
@@ -263,10 +271,6 @@
   .research-topic-image {
     width: 100px;
     height: 100px;
-  }
-
-  .carousel-controls {
-    gap: 1rem;
   }
 
   .carousel-prev,
