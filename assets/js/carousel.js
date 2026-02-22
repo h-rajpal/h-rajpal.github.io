@@ -13,25 +13,33 @@ document.addEventListener('DOMContentLoaded', function() {
   let currentIndex = 0;
   let autoplayInterval;
 
-  // Create dots
-  items.forEach((_, index) => {
-    const dot = document.createElement('button');
-    dot.className = 'carousel-dot' + (index === 0 ? ' active' : '');
-    dot.setAttribute('aria-label', `Go to publication ${index + 1}`);
-    dot.addEventListener('click', () => {
-      clearInterval(autoplayInterval);
-      goToSlide(index);
-      startAutoplay();
+  // Ensure first item is visible immediately
+  items[0].classList.add('active');
+
+  // Create dots if container exists
+  if (dotsContainer) {
+    items.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (index === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Go to publication ${index + 1}`);
+      dot.addEventListener('click', () => {
+        clearInterval(autoplayInterval);
+        goToSlide(index);
+        startAutoplay();
+      });
+      dotsContainer.appendChild(dot);
     });
-    dotsContainer.appendChild(dot);
-  });
+  }
 
   function goToSlide(index) {
     items.forEach(item => item.classList.remove('active'));
-    document.querySelectorAll('.carousel-dot').forEach(dot => dot.classList.remove('active'));
+    const allDots = document.querySelectorAll('.carousel-dot');
+    allDots.forEach(dot => dot.classList.remove('active'));
 
     items[index].classList.add('active');
-    document.querySelectorAll('.carousel-dot')[index].classList.add('active');
+    if (allDots.length > index) {
+      allDots[index].classList.add('active');
+    }
     currentIndex = index;
   }
 
