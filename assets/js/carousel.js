@@ -1,5 +1,8 @@
 // Publications Carousel
+console.log('Carousel script loading...');
+
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM Content Loaded - Carousel initializing');
   const carousel = document.querySelector('.publications-carousel');
   if (!carousel) return;
 
