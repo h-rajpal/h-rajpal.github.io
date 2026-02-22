@@ -18,7 +18,7 @@
   left: 0;
   right: 0;
   width: 100%;
-  opacity: 0;
+  opacity: 0 !important;
   transition: opacity 0.5s ease-in-out;
   pointer-events: none;
   padding: 2.5rem;
@@ -29,12 +29,22 @@
 }
 
 .carousel-publication-item.active {
-  opacity: 1;
+  opacity: 1 !important;
   pointer-events: auto;
 }
 </style>
 
 <script>
+// Force display of first carousel item
+setTimeout(function() {
+  const firstItem = document.querySelector('.carousel-publication-item');
+  if (firstItem) {
+    console.log('Setting first carousel item as active');
+    firstItem.classList.add('active');
+    console.log('First item classes:', firstItem.className);
+  }
+}, 100);
+
 document.addEventListener('DOMContentLoaded', function() {
   console.log('Carousel script loading...');
   
