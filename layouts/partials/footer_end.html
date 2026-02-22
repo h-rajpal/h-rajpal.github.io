@@ -2,5 +2,111 @@
   Add custom HTML at the end of <body>
 -->
 
-{{ $carouselJs := resources.Get "js/carousel.js" | js.Build }}
-<script src="{{ $carouselJs.RelPermalink }}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('Carousel script loading...');
+  
+  const carousel = document.querySelector('.publications-carousel');
+  if (!carousel) return;
+
+  const items = document.querySelectorAll('.carousel-publication-item');
+  const dotsContainer = document.querySelector('.carousel-dots');
+  const prevBtn = document.querySelector('.carousel-prev');
+  const nextBtn = document.querySelector('.carousel-next');
+
+  if (items.length === 0) return;
+  console.log('DOM Content Loaded - Carousel initializing with ' + items.length + ' items');
+
+  let currentIndex = 0;
+  let autoplayInterval;
+
+  // Ensure first item is visible immediately
+  items[0].classList.add('active');
+
+  // Create dots if container exists
+  if (dotsContainer) {
+    items.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (index === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to publication ' + (index + 1));
+      dot.addEventListener('click', () => {
+        clearInterval(autoplayInterval);
+        goToSlide(index);
+        startAutoplay();
+      });
+      dotsContainer.appendChild(dot);
+    });
+  }
+
+  function goToSlide(index) {
+    items.forEach(item => item.classList.remove('active'));
+    const allDots = document.querySelectorAll('.carousel-dot');
+    allDots.forEach(dot => dot.classList.remove('active'));
+
+    items[index].classList.add('active');
+    if (allDots.length > index) {
+      allDots[index].classList.add('active');
+    }
+    currentIndex = index;
+  }
+
+  function nextSlide() {
+    const next = (currentIndex + 1) % items.length;
+    goToSlide(next);
+  }
+
+  function prevSlide() {
+    const prev = (currentIndex - 1 + items.length) % items.length;
+    goToSlide(prev);
+  }
+
+  function startAutoplay() {
+    autoplayInterval = setInterval(nextSlide, 10000); // 10 seconds
+  }
+
+  // Event listeners
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      clearInterval(autoplayInterval);
+      nextSlide();
+      startAutoplay();
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      clearInterval(autoplayInterval);
+      prevSlide();
+      startAutoplay();
+    });
+  }
+
+  // Start autoplay
+  goToSlide(0);
+  startAutoplay();
+});
+
+// Abstract Toggle Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const abstractToggles = document.querySelectorAll('.abstract-toggle');
+  
+  abstractToggles.forEach(toggle => {
+    toggle.addEventListener('click', function() {
+      const container = this.nextElementSibling;
+      if (!container || !container.classList.contains('publication-abstract-container')) {
+        return;
+      }
+      
+      const isExpanded = this.classList.contains('expanded');
+      
+      if (isExpanded) {
+        container.style.display = 'none';
+        this.classList.remove('expanded');
+      } else {
+        container.style.display = 'block';
+        this.classList.add('expanded');
+      }
+    });
+  });
+});
+</script>
