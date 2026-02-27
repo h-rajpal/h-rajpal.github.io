@@ -35,11 +35,25 @@ footer {
 
 main,
 footer {
-  margin: 0.5em calc(1.1em + 1cm) 0.5em calc(1.1em + 1cm);
+  margin: 0.5em calc(1.1em + 0.5cm) 0.5em calc(1.1em + 0.5cm);
+}
+
+@media (--lg) {
+  main,
+  footer {
+    margin: 0.5em calc(1.1em + 1cm) 0.5em calc(1.1em + 1cm);
+  }
 }
 
 .content {
   grid-area: content;
-  margin-right: 5cm;
-  margin-left: 5cm;
+  margin-right: 0.5cm;
+  margin-left: 0.5cm;
+}
+
+@media (--lg) {
+  .content {
+    margin-right: 5cm;
+    margin-left: 5cm;
+  }
 }
