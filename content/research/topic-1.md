@@ -2,6 +2,7 @@
 title: "Computational Neuroscience"
 description: "Focus on understanding Self-Organized Criticality, Altered States of Consciousness and Neuro-AI."
 image: "https://ars.els-cdn.com/content/image/1-s2.0-S105381192200739X-gr2.jpg"
+weight: 1
 draft: false
 ---
 

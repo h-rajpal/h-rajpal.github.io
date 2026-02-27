@@ -2,6 +2,7 @@
 title: "Computational Biology"
 description: "Self-Organization and Causal Emergence in Biological Systems"
 image: "/publications/images/emergence.png"
+weight: 2
 draft: false
 ---
 

@@ -3,7 +3,7 @@
     <h1>{{ .Title }}</h1>
     
     <div class="research-grid">
-      {{ range .Pages.ByTitle }}
+      {{ range .Pages.ByWeight }}
         <article class="research-card">
           <a href="{{ .Permalink }}" class="research-card-link">
             {{ if .Params.image }}
