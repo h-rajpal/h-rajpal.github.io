@@ -11,16 +11,24 @@
     },
     "profiles": [
       {
-        "network": "GitHub",
-        "url": "https://github.com/h-rajpal"
+        "network": "gmail",
+        "url": "mailto:h.rajpal15@imperial.ac.uk"
       },
       {
-        "network": "X",
-        "url": "https://x.com/pixelated_poet"
+        "network": "github",
+        "url": "https://github.com/h-rajpal"
       },
       {
         "network": "bluesky",
         "url": "https://bsky.app/profile/h-rajpal.bsky.social"
+      },
+      {
+        "network": "googlescholar",
+        "url": "https://scholar.google.com/citations?user=JxVzoGQAAAAJ&hl=en"
+      },
+      {
+        "network": "linkedin",
+        "url": "https://www.linkedin.com/in/hardik-rajpal-1b7999125/"
       }
     ]
   },
