@@ -43,6 +43,14 @@ enableRobotsTXT = true
     text = "h-rajpal"
     url = "/"
 
+  # Umami Cloud analytics (https://cloud.umami.is). Only production builds include
+  # the script (layouts/partials/head/head_end.html).
+  [params.umami]
+    src = "https://cloud.umami.is/script.js"
+    id = "c96977c6-37f0-48ec-985a-6ab638afdf62"
+    # Only count visits on the real site, not previews or copies of it.
+    domains = "h-rajpal.github.io"
+
   [params.prism]
     languages = [
       "markup",

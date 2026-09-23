@@ -1,27 +1,47 @@
 {{ define "main" }}
   <div class="publications-container">
     <h1>{{ .Title }}</h1>
-    
+
+    {{ $publications := sort (index site.Data "publications").publications "date" "desc" }}
+
+    <div class="publication-filters" role="group" aria-label="Filter publications by research topic">
+      <button type="button" class="filter-button is-active" data-topic="" aria-pressed="true">
+        All <span class="filter-count">{{ len $publications }}</span>
+      </button>
+      {{ range (where site.RegularPages "Section" "research").ByWeight }}
+        {{ $topic := .Title }}
+        {{ $count := len (where $publications "research_topics" "intersect" (slice $topic)) }}
+        {{ if $count }}
+          <button type="button" class="filter-button" data-topic="{{ $topic | urlize }}" aria-pressed="false">
+            {{ $topic }} <span class="filter-count">{{ $count }}</span>
+          </button>
+        {{ end }}
+      {{ end }}
+    </div>
+
     <div class="publications-list" id="publications-list">
-      {{ $publications := (index site.Data "publications").publications }}
       {{ range $index, $pub := $publications }}
-        <article class="publication-item{{ if ge $index 5 }} hidden{{ end }}" data-index="{{ $index }}">
-          {{ if .image }}
+        {{ $topicSlugs := slice }}
+        {{ range .research_topics }}{{ $topicSlugs = $topicSlugs | append (urlize .) }}{{ end }}
+        {{ $image := partial "image-src.html" (dict "src" .image "fallback" (printf "publications/%s.*" .id) "context" (printf "Publication %q" .id)) }}
+        {{ $pdf := partial "pub-pdf.html" . }}
+        <article class="publication-item{{ if ge $index 5 }} hidden{{ end }}" data-topics="{{ delimit $topicSlugs " " }}">
+          {{ if $image }}
             <div class="publication-image-wrapper">
-              <img src="{{ .image }}" alt="{{ .title }}" class="publication-image">
+              <img src="{{ $image }}" alt="{{ .title }}" class="publication-image" loading="lazy">
               {{ if .journal_url }}
-                <a href="{{ .journal_url }}" target="_blank" rel="noopener noreferrer" class="publication-image-link"></a>
+                <a href="{{ .journal_url }}" target="_blank" rel="noopener noreferrer" class="publication-image-link" aria-label="{{ .title }}"></a>
               {{ end }}
             </div>
           {{ else }}
             <div class="publication-image-wrapper publication-image-placeholder">
               <span>Publication</span>
               {{ if .journal_url }}
-                <a href="{{ .journal_url }}" target="_blank" rel="noopener noreferrer" class="publication-image-link"></a>
+                <a href="{{ .journal_url }}" target="_blank" rel="noopener noreferrer" class="publication-image-link" aria-label="{{ .title }}"></a>
               {{ end }}
             </div>
           {{ end }}
-          
+
           <div class="publication-content">
             <div class="publication-header">
               <h2 class="publication-title">
@@ -31,8 +51,8 @@
                   {{ .title }}
                 {{ end }}
               </h2>
-              {{ if .pdf_path }}
-                <a href="{{ .pdf_path }}" target="_blank" rel="noopener noreferrer" class="publication-pdf-icon" title="Download PDF">
+              {{ with $pdf }}
+                <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="publication-pdf-icon" title="Download PDF">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="7 10 12 15 17 10"></polyline>
@@ -41,11 +61,13 @@
                 </a>
               {{ end }}
             </div>
-            
+
             {{ if .authors }}
               <p class="publication-authors">{{ delimit .authors ", " }}</p>
             {{ end }}
-            
+
+            {{ partial "pub-venue.html" . }}
+
             {{ if .abstract }}
               <button class="abstract-toggle" data-publication="{{ .id | default .title }}">
                 <span class="abstract-label">Abstract</span>
@@ -55,7 +77,7 @@
                 <p class="publication-abstract">{{ .abstract }}</p>
               </div>
             {{ end }}
-            
+
             {{ if .research_topics }}
               <div class="publication-topics">
                 {{ range .research_topics }}
@@ -67,10 +89,10 @@
         </article>
       {{ end }}
     </div>
-    
+
     {{ if gt (len $publications) 5 }}
       <div class="publications-load-more-container">
-        <button class="load-more-button" id="load-more-button" data-total="{{ len $publications }}">
+        <button class="load-more-button" id="load-more-button">
           Show More
         </button>
       </div>

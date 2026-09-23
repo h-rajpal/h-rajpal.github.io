@@ -39,3 +39,13 @@
     flex-basis: 100%;
   }
 }
+
+/* CV publications (layouts/shortcodes/cv-publications.html) */
+.cv-publications {
+  padding-left: 1.5rem;
+}
+
+.cv-publications__item {
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}

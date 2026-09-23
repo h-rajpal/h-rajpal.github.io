@@ -1,7 +1,8 @@
 ---
 title: "Computational Biology"
 description: "Self-Organization and Causal Emergence in Biological Systems"
-image: "/publications/images/emergence.png"
+image: "publications/sas2025improved.png"
+aliases: ["/research/topic-4/"]
 weight: 2
 draft: false
 ---

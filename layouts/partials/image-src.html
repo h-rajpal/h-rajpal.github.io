@@ -1,0 +1,38 @@
+{{- /*
+  Returns the URL of a resized copy of a local image, or "" when there is none.
+
+  Images live under assets/images/. Parameters:
+    src      path relative to assets/images/ (optional, a leading "/" is ignored)
+    fallback glob relative to assets/images/, used when src is empty,
+             e.g. "publications/<id>.*" so that dropping in a file is enough
+    context  what the image belongs to, for error messages
+
+  Remote images fail the build on purpose: publisher links expire (a signed
+  journal URL is what broke the research page), so every image must be local.
+*/ -}}
+{{- $url := "" -}}
+{{- $img := false -}}
+{{- with .src -}}
+  {{- if or (hasPrefix . "http://") (hasPrefix . "https://") (hasPrefix . "//") -}}
+    {{- errorf "%s uses a remote image (%s). Save the image under assets/images/ instead, so it cannot break." $.context . -}}
+  {{- else -}}
+    {{- $img = resources.Get (path.Join "images" (strings.TrimPrefix "/" .)) -}}
+    {{- if not $img -}}
+      {{- errorf "%s: image assets/images/%s does not exist" $.context (strings.TrimPrefix "/" .) -}}
+    {{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- with .fallback -}}
+    {{- range first 1 (resources.Match (path.Join "images" .)) -}}
+      {{- $img = . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- with $img -}}
+  {{- if eq .MediaType.SubType "svg" -}}
+    {{- $url = .RelPermalink -}}
+  {{- else -}}
+    {{- $url = (.Resize (printf "%dx webp q85" (math.Min .Width 800 | int))).RelPermalink -}}
+  {{- end -}}
+{{- end -}}
+{{- return $url -}}

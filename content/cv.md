@@ -20,9 +20,9 @@ type: "cv"
 
 {{< json-resume "awards" >}} -->
 
-<!-- ## Selected Publications
+## Publications
 
-{{< json-resume "publications" >}}
+{{< cv-publications >}}
 
-For a complete list of publications see [Google Scholar](https://scholar.google.co.uk/citations?user=JxVzoGQAAAAJ&hl=en) -->
+For citation counts see [Google Scholar](https://scholar.google.co.uk/citations?user=JxVzoGQAAAAJ&hl=en).
 

@@ -1,0 +1,11 @@
+{{- /*
+  Returns a publication's PDF link: its pdf_path, otherwise
+  content/publications/pdfs/<id>.pdf when that file exists, otherwise "".
+*/ -}}
+{{- $url := .pdf_path | default "" -}}
+{{- if and (not $url) .id -}}
+  {{- if fileExists (printf "content/publications/pdfs/%s.pdf" .id) -}}
+    {{- $url = printf "/publications/pdfs/%s.pdf" .id -}}
+  {{- end -}}
+{{- end -}}
+{{- return $url -}}

@@ -1,0 +1,7 @@
+{{- /* "PREPRINT arXiv · 2026" line for a publication. */ -}}
+<p class="publication-venue">
+  {{- if eq .type "preprint" }}<span class="preprint-badge">Preprint</span> {{ end -}}
+  {{- with .journal_name }}<span class="publication-journal">{{ . }}</span>{{ end -}}
+  {{- with .year }}{{ if $.journal_name }} · {{ end }}{{ . }}{{ end -}}
+  {{- with .preprint_url }} · <a class="publication-preprint-link" href="{{ . }}" target="_blank" rel="noopener noreferrer">Preprint version</a>{{ end -}}
+</p>

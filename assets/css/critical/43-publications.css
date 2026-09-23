@@ -336,3 +336,69 @@
   cursor: not-allowed;
   transform: none;
 }
+
+/* Topic Filter */
+.publication-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.filter-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  background: none;
+  border: 1px solid var(--accent-color, #458588);
+  border-radius: 999px;
+  color: var(--accent-color, #458588);
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.filter-button:hover {
+  background: rgba(69, 133, 136, 0.12);
+}
+
+.filter-button.is-active {
+  background: var(--accent-color, #458588);
+  color: white;
+}
+
+.filter-count {
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+/* Venue Line */
+.publication-venue {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--foreground-secondary, #504945);
+}
+
+.publication-journal {
+  font-weight: 600;
+}
+
+.preprint-badge {
+  display: inline-block;
+  margin-right: 0.2rem;
+  padding: 0 0.45rem;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  vertical-align: 1px;
+}
+
+.publication-preprint-link {
+  color: var(--accent-color, #458588);
+}

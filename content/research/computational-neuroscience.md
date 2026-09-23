@@ -1,7 +1,8 @@
 ---
 title: "Computational Neuroscience"
 description: "Self-Organized Criticality, Altered States of Consciousness and Neuro-AI."
-image: "https://ars.els-cdn.com/content/image/1-s2.0-S105381192200739X-gr2.jpg"
+image: "publications/rajpal2022psychedelics.jpg"
+aliases: ["/research/topic-1/"]
 weight: 1
 draft: false
 ---

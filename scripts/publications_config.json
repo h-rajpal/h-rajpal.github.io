@@ -1,0 +1,54 @@
+{
+  "scholar_user": "JxVzoGQAAAAJ",
+  "orcid": "0000-0002-1291-4817",
+  "author_surname": "Rajpal",
+  "author_aliases": {
+    "Henrik Jeldtoft Jensen": "Henrik J Jensen",
+    "Madalina I Sas": "Madalina Sas"
+  },
+  "ignore": [
+    {
+      "title": "Deciphering the Dynamics of Memory Encoding and Recall in the Hippocampus Using Information Theory and Graph Theory",
+      "reason": "Conference abstract (Journal of Computational Neuroscience supplement)"
+    },
+    {
+      "title": "Differences in the scaling of spatial Information-processing signatures in mouse cortex",
+      "reason": "Conference abstract (APS Global Physics Summit)"
+    },
+    {
+      "title": "Causality and emergence in complex systems: perspectives from information theory",
+      "reason": "PhD thesis"
+    },
+    {
+      "title": "Symmetry in Arts and Science",
+      "reason": "Not listed on the website"
+    },
+    {
+      "title": "Quantifying Hierarchical Selection",
+      "reason": "Earlier preprint of 'Information dynamics and the emergence of high-order individuality in ecosystems'"
+    }
+  ],
+  "ignore_venue_patterns": [
+    "\\(SUPPL",
+    "Physics Summit",
+    "APS March Meeting",
+    "Bulletin of the American Physical Society"
+  ],
+  "topic_keywords": {
+    "Computational Neuroscience": [
+      "neur", "brain", "cortex", "cortical", "spiking", "hippocamp", "criticality",
+      "conscious", "psychedel", "eeg", "fmri", "memory", "cognit", "representation learning"
+    ],
+    "Computational Biology": [
+      "biolog", "cell", "ecg", "cardi", "alzheimer", "disease", "causal emergence",
+      "gene", "protein", "tissue", "organism"
+    ],
+    "Evolutionary Ecology": [
+      "ecosystem", "evolution", "ecolog", "natural selection", "individuality", "species"
+    ],
+    "Computational Social Science": [
+      "social", "econom", "opinion", "polit", "twitter", "technolog", "minority game",
+      "market", "music", "societ", "journalist"
+    ]
+  }
+}

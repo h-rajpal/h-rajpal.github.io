@@ -1,7 +1,8 @@
 ---
 title: "Evolutionary Ecology"
 description: "How hierarchical organization arises by natural selection?"
-image: "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs42003-025-08619-2/MediaObjects/42003_2025_8619_Fig8_HTML.png?as=webp"
+image: "publications/rajpal2025information.png"
+aliases: ["/research/topic-2/"]
 weight: 3
 draft: false
 ---

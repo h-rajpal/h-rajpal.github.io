@@ -13,10 +13,11 @@
       {{ $research := where site.AllPages "Section" "research" }}
       {{ range $research }}
         {{ if eq .Kind "page" }}
+          {{ $image := partial "image-src.html" (dict "src" .Params.image "fallback" (printf "research/%s.*" .File.ContentBaseName) "context" .File.Path) }}
           <article class="research-topic-card">
-            {{ if .Params.image }}
+            {{ if $image }}
               <div class="research-topic-image">
-                <img src="{{ .Params.image }}" alt="{{ .Title }}">
+                <img src="{{ $image }}" alt="{{ .Title }}">
               </div>
             {{ else }}
               <div class="research-topic-image research-topic-placeholder">
@@ -36,14 +37,14 @@
   <section class="about-publications-section">
     <h2><a href="/publications/">Latest Publications</a></h2>
     <div class="publications-carousel">
-      {{ $publications := (index site.Data "publications").publications }}
+      {{ $publications := sort (index site.Data "publications").publications "date" "desc" }}
       {{ range $index, $pub := first 5 $publications }}
         <article class="carousel-publication-item" data-index="{{ $index }}">
           <div class="carousel-publication-content">
             <h3 class="carousel-publication-title">{{ $pub.title }}</h3>
             <p class="carousel-publication-authors">{{ delimit $pub.authors ", " }}</p>
-            {{ if $pub.pdf_path }}
-              <a href="{{ $pub.pdf_path }}" target="_blank" rel="noopener noreferrer" class="carousel-pdf-link">📄 Download PDF</a>
+            {{ with partial "pub-pdf.html" $pub }}
+              <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="carousel-pdf-link">📄 Download PDF</a>
             {{ end }}
           </div>
         </article>

@@ -1,0 +1,29 @@
+{{- /*
+  Publication list for the CV, generated from data/publications.json.
+  Usage: {{< cv-publications >}} or {{< cv-publications highlight="Hardik Rajpal" >}}
+*/ -}}
+{{- $pubs := sort (index site.Data "publications").publications "date" "desc" -}}
+{{- $me := .Get "highlight" | default "Hardik Rajpal" | htmlEscape -}}
+{{- $groups := slice
+  (dict "title" "Journal articles and conference papers" "items" (where $pubs "type" "ne" "preprint"))
+  (dict "title" "Preprints" "items" (where $pubs "type" "preprint"))
+-}}
+{{- range $groups }}
+  {{- if .items }}
+    <h3 class="cv-publications__heading">{{ .title }}</h3>
+    <ol class="cv-publications" reversed>
+      {{- range .items }}
+        {{- $stop := cond (gt (len (findRE `[.?!]$` .title)) 0) "" "." }}
+        <li class="cv-publications__item">
+          {{ replace (delimit .authors ", " | htmlEscape) $me (printf "<strong>%s</strong>" $me) | safeHTML }}
+          ({{ .year }}).
+          {{ if .journal_url }}<a href="{{ .journal_url }}">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}{{ $stop }}
+          <em>{{ .journal_name }}</em>
+          {{- with .volume }} {{ . }}{{ end }}
+          {{- with .issue }}({{ . }}){{ end }}
+          {{- with .pages }}, {{ . }}{{ end }}.
+        </li>
+      {{- end }}
+    </ol>
+  {{- end }}
+{{- end }}

@@ -1,4 +1,14 @@
 <!--
   Add custom HTML at the end of <head>
 -->
-<script defer src="http://100.91.206.32:3000/script.js" data-website-id="48c7c9f3-56ff-4474-8146-76480b033735"></script>
+{{- /*
+  Umami analytics, configured under [params.umami] in config/_default/config.toml.
+  Only production builds load it, so local previews are not counted. It uses
+  async rather than defer: a deferred script that hangs (e.g. while the analytics
+  server is offline) delays DOMContentLoaded, which the page's own scripts wait on.
+*/}}
+{{- with site.Params.umami }}
+  {{- if and hugo.IsProduction .src .id }}
+<script async src="{{ .src }}" data-website-id="{{ .id }}"{{ with .domains }} data-domains="{{ . }}"{{ end }}></script>
+  {{- end }}
+{{- end }}

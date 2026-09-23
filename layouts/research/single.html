@@ -16,7 +16,7 @@
 
     <!-- Related Publications Section -->
     {{ $topicTitle := .Title }}
-    {{ $allPubs := (index site.Data "publications").publications }}
+    {{ $allPubs := sort (index site.Data "publications").publications "date" "desc" }}
     {{ $relatedPubs := slice }}
     {{ range $allPubs }}
       {{ if in .research_topics $topicTitle }}
@@ -33,8 +33,9 @@
               {{ if .authors }}
                 <p class="publication-topic-authors">{{ delimit .authors ", " }}</p>
               {{ end }}
-              {{ if .pdf_path }}
-                <a href="{{ .pdf_path }}" target="_blank" rel="noopener noreferrer" class="publication-topic-pdf">📄 PDF</a>
+              {{ partial "pub-venue.html" . }}
+              {{ with partial "pub-pdf.html" . }}
+                <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="publication-topic-pdf">📄 PDF</a>
               {{ end }}
             </div>
           {{ end }}

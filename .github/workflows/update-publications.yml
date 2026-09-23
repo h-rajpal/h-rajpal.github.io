@@ -1,0 +1,58 @@
+# Checks Google Scholar every Monday for new publications and opens a pull
+# request with them (plus preprints that have since been published), so they
+# can be reviewed before going live. Also runs on demand from the Actions tab.
+#
+# Requires: Settings -> Actions -> General -> Workflow permissions ->
+# "Allow GitHub Actions to create and approve pull requests".
+name: Update publications
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Mondays, 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-publications
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # A new run would overwrite edits made on the open pull request's branch.
+      - name: Skip if the last update is still open
+        id: open-pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          open=$(gh pr list --head bot/update-publications --state open --json number --jq length)
+          if [ "$open" != "0" ]; then
+            echo "A publications pull request is still open. Merge or close it first." >> "$GITHUB_STEP_SUMMARY"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Fetch publications
+        if: steps.open-pr.outputs.skip != 'true'
+        run: |
+          python3 scripts/update_publications.py --report "${{ runner.temp }}/publications-report.md"
+          cat "${{ runner.temp }}/publications-report.md" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Open pull request
+        if: steps.open-pr.outputs.skip != 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: bot/update-publications
+          delete-branch: true
+          add-paths: |
+            data/publications.json
+            assets/images/publications/*
+          commit-message: Update publications from Google Scholar
+          title: Publications update
+          body-path: ${{ runner.temp }}/publications-report.md

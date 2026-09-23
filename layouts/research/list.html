@@ -4,11 +4,12 @@
     
     <div class="research-grid">
       {{ range .Pages.ByWeight }}
+        {{ $image := partial "image-src.html" (dict "src" .Params.image "fallback" (printf "research/%s.*" .File.ContentBaseName) "context" .File.Path) }}
         <article class="research-card">
           <a href="{{ .Permalink }}" class="research-card-link">
-            {{ if .Params.image }}
+            {{ if $image }}
               <div class="research-image-wrapper">
-                <img src="{{ .Params.image }}" alt="{{ .Title }}" class="research-image">
+                <img src="{{ $image }}" alt="{{ .Title }}" class="research-image">
               </div>
             {{ else }}
               <div class="research-image-wrapper research-image-placeholder">
