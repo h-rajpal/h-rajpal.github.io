@@ -128,6 +128,17 @@
       "scholar_ids": ["JxVzoGQAAAAJ:UebtZRa9Y70C"]
     },
     {
+      "id": "rajpal2026h",
+      "title": "h-rajpal/Directed_Cycles_InfoProcessing: v1.0.0 — Code accompanying \"Directed Cycles as Higher-Order Units of Information Processing in Complex Networks\"",
+      "authors": ["Hardik Rajpal"],
+      "date": "2026-01-01",
+      "year": 2026,
+      "type": "journal",
+      "journal_name": "Zenodo (CERN European Organization for Nuclear Research)",
+      "journal_url": "https://doi.org/10.5281/zenodo.21468751",
+      "research_topics": []
+    },
+    {
       "id": "sas2025improved",
       "title": "Improved estimators of causal emergence for large systems",
       "authors": ["Madalina Sas", "Fernando E Rosas", "Hardik Rajpal", "Daniel Bor", "Henrik J Jensen", "Pedro AM Mediano"],
